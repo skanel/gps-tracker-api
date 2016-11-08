@@ -6,8 +6,8 @@ const User = thinky.createModel("User", {
   username: type.string().required(),
   password: type.string().required(),
   salt: type.string().required(),
-  createdAt: type.date(),
-  updatedAt: type.date()
+  createdAt: type.string(),
+  updatedAt: type.string()
 });
 
 module.exports = User;
