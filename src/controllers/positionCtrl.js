@@ -44,37 +44,6 @@ module.exports.getAll = function (req, res) {
     })
 };
 
-module.exports.update = function (req, res) {
-  if (!req.params.positionId) {
-    return res.status(400).json({success: false, message: 'Position id required as param'})
-  }
-  if (!req.body.terminalId || !req.body.lat || !req.body.long) {
-    return res.status(400).json({success: false, message: 'You can update terminal id, latitude and longitude are required'})
-  }
-
-  positionRepo.getById(req.params.positionId)
-    .then((position) => {
-      let updateData = {updatedAt: moment().format()};
-      if (req.body.terminalId) {
-        Object.assign(updateData, {terminalId: req.body.terminalId})
-      }
-      if (req.body.lat) {
-        Object.assign(updateData, {lat: req.body.lat})
-      }
-      if (req.body.long) {
-        Object.assign(updateData, {long: req.body.long})
-      }
-      return positionRepo.update(req.params.positionId, updateData)
-        .then((position) => {
-          res.setHeader('Location', '/positions/'+position.id);
-          return res.json({success: true, message: 'Entity updated'});
-        })
-    })
-    .catch((err) => {
-      return res.status(400).json({success: false, message: err.toString()})
-    });
-};
-
 module.exports.delete = function (req, res) {
   if (!req.params.positionId) {
     return res.status(400).json({success: false, message: 'Position id required as param'})
