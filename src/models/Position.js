@@ -6,7 +6,8 @@ const Position = thinky.createModel("Position", {
   terminalId: type.string().required(),
   lat: type.string().required(),
   long: type.string().required(),
-  createdAt: type.string()
+  createdAt: type.string(),
+  updatedAt: type.string()
 });
 
 module.exports = Position;

@@ -5,6 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start:dev": "nodemon --use_strict server.js",
+    "start": "node --use_strict server.js",
+    "import:all": "npm run -s clear && npm run -s import:users && npm run -s import:positions",
+    "clear": "node --use_strict src/init/clear.js",
+    "import:users": "node --use_strict src/init/users.js",
+    "import:positions": "node --use_strict src/init/positions.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,9 +23,11 @@
     "body-parser": "^1.15.2",
     "cors": "^2.8.1",
     "express": "^4.14.0",
+    "jsonfile": "^2.4.0",
     "jwt-simple": "^0.5.0",
     "moment": "^2.15.1",
     "node_hash": "^0.2.0",
-    "thinky": "^2.3.7"
+    "thinky": "^2.3.7",
+    "uuid": "^2.0.3"
   }
 }
