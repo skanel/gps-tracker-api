@@ -8,7 +8,6 @@ router.route('/')
 
 router.route('/:positionId')
   .get(authorize, positionCtrl.getById)
-  .put(authorize, positionCtrl.update)
   .delete(authorize, positionCtrl.delete);
 
 module.exports = router;
